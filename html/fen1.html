@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <link rel="stylesheet" href="/edsa-php1/css/fen1.css" type="text/css" />
+  <link rel="stylesheet" href="./../css/fen1.css" type="text/css" />
 <script>
 
 
@@ -17,6 +17,10 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    
+    var valeur="10";
+    document.getElementById("champ1").value=valeur;
+    
 }
 </script>
 
@@ -29,7 +33,9 @@ function drop(ev) {
 
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <br>
-<img id="drag1" src="/edsa-php1/images/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+<img id="drag1" src="./../images/img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<input type="text" id="champ1" value="3" name="champ1">
 
 </body>
 </html>
