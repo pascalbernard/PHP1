@@ -20,11 +20,6 @@
        }
        
        
-       function select($requete)
-       {
-                
-           
-           
-       }
+
   }
 ?>
