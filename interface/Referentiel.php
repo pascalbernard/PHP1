@@ -1,8 +1,8 @@
 <?php
 
 
-    require ("../php/classes/bd.php");
-    require ("../php/DAO/DaoFiliere.php");
+
+ include ("../php/DAO/DaoFiliere.php");
     
 
     $cnxBase = new bd();
@@ -33,7 +33,7 @@
         
         $tab=tableauFiliere($conn);
         
-        $chaine = "<SELECT name='nom' size='1'>";
+        $chaine = "<SELECT name='RefFiliere' id='RefFiliere' size='1'>";
         for ($i=0;$i<count($tab);$i++)
         {
             $chaine = $chaine.'<OPTION>'.$tab[$i];

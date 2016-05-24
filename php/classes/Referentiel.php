@@ -3,16 +3,76 @@
   class Referentiel 
   {
          private    $i_IdRef;
-         public     $s_Nom;
-         public     $s_Filiere;
-         public     $s_Specialite;
-         public     $d_Arrete;
-         public     $d_Obsollette;
-         public     $s_RefMinisteriel;
+         private    $s_Nom;
+         private    $s_Filiere;
+         private    $s_Specialite;
+         private    $d_Arrete;
+         private    $d_Obsolette;
+         private    $s_RefMinisteriel;
       
+
       
+      // getter / setter
+      
+      public function getNom()
+      {
+          return $this->s_Nom;
+      }
+      public function setNom($var)
+      {
+          $this->s_Nom=$var;
+      }                  
+      
+       public function getFiliere()
+      {
+          return $this->s_Filiere;
+      }
+      public function setFiliere($var)
+      {
+          $this->s_Filiere=$var;
+      }                  
+     
+       public function getSpecialite()
+      {
+          return $this->s_Specialite;
+      }
+      public function setSpecialite($var)
+      {
+          $this->s_Specialite=$var;
+      }                  
+     
+       public function getObsolette()
+      {
+          return $this->d_Obsolette;
+      }
+      public function setObsolette($var)
+      {
+          $this->d_Obsolette=$var;
+      }                  
+     
+      public function getArrete()
+      {
+          return $this->d_Arrete;
+      }
+      public function setArrete($var)
+      {
+          $this->d_Arrete=$var;
+      }                  
+     
+      public function getRefMinisteriel()
+      {
+          return $this->s_RefMinisteriel;
+      }
+      public function setRefMinisteriel($var)
+      {
+          $this->s_RefMinisteriel=$var;
+      }                  
+     
+     
+     
+     
       // constuire l'objet
-      public function __construct() {}
+      //private function __construct() {}
       
       // ajouter un référentiel
       public function Ajouter(){}
@@ -26,23 +86,12 @@
       // lire un référentiel
       public function Lire ($ii_IdRef) {}
       
-      
+      // création de la table
+      // CREATE TABLE `scool`. ( `idRef` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `filiere` VARCHAR(10) NOT NULL , `specialite` VARCHAR(60) NOT NULL , `dateArrete` DATE NOT NULL , `dateObsolette` DATE NOT NULL , `refMinisteriel` VARCHAR(100) NOT NULL , PRIMARY KEY (`idRef`)) ENGINE = MyISAM; 
   }
       
   
   
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 
-<html>
-<head>
-  <meta name="generator" content=
-  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
-
-  <title></title>
-</head>
-
-<body>
-</body>
-</html>
