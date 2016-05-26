@@ -74,7 +74,7 @@
 		$chaine="<table>"  ;
 		for ($i=0;$i<count($tab);$i++)
 		{
-			$chaine=$chaine."<tr>";
+			$chaine=$chaine."<tr id='".$tab[$i][0]."'>";
 			for ($j=0;$j<count($tab[0]);$j++)
 				$chaine=$chaine."<td>".$tab[$i][$j]."</td>";
 			

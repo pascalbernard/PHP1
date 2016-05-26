@@ -41,24 +41,30 @@
     //------------------------------------------------------    
     if ($crud=="ajouter")
         echo "<form method='POST' action='..\\interface\\crud.php?action=ajouter&formulaire=htmlreferentiel'>";
+
+    if ($crud=="modiier")
+        echo "<form method='POST' action='..\\interface\\crud.php?action=modifier&formulaire=htmlreferentiel'>";
   
+  
+  
+  	// affichage de la liste des données avant la saisie
+  	if ($crud=="modifier")
+	{
+		$chaine=htmlListeReferentiel("idRef","ASC");
+		echo $chaine;
+			
+	}
+ 
+    // affichage des champs
     afficheChamps($RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel);
   
-  
-	if ($crud=="ajouter")
+    // affichage du bouton de validation
+	if (($crud=="ajouter") || ($crud=="modifier"))
 	{				
 		echo "<input type='submit' value='OK'>";
 		echo "</form>";
 	}
 	
-	if ($crud="modifier")
-	{
-		$chaine=htmlListeReferentiel("idRef","ASC");
-		
-		echo $chaine;
-		
-		
-	}
 	
 	
 	// fonction qui affiche les champs du formulaire et les données en cas de modification
