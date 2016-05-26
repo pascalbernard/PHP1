@@ -63,25 +63,27 @@
         return $chaine;
     }
     
-    
+    // affiche le tableau des éléments du référentiel
+    //-----------------------------------------------
     function htmlListeReferentiel($champTri,$ascDesc)
     {
 		$tab=array();		
 		$conn=getbase();
 		
 		$tab=tableauReferentiel($conn);
-		
-		$chaine="<table>"  ;
+		                                      
+		$chaine="<table id='tableau'>"  ;
+		$chaine=$chaine."<tr><td>Id</td><td>Nom</td><td>Filière</td><td>Spécialité</td><td>Date arrêté</td><td>Date arrêt</td><td>Lien ministériel</td></tr>\n" ;
 		for ($i=0;$i<count($tab);$i++)
 		{
 			$chaine=$chaine."<tr id='".$tab[$i][0]."'>";
 			for ($j=0;$j<count($tab[0]);$j++)
-				$chaine=$chaine."<td>".$tab[$i][$j]."</td>";
+				$chaine=$chaine."<td onclick='afficheLigne(this.parentNode.rowIndex);'>".$tab[$i][$j]."</td>";
 			
-			$chaine=$chaine."</tr>";
+			$chaine=$chaine."</tr>\n";
 			
 		}
-		$chaine=$chaine."</table>";
+		$chaine=$chaine."</table>\n";
 		return $chaine;
     }
     

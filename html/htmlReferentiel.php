@@ -14,6 +14,24 @@
 <meta name="revisit-after" content="15 days">
 <title>Référentiel</title>
 <link rel="stylesheet" type="text/css" href="my.css">
+
+<script>
+	function afficheLigne(source)
+	{
+		//var ligne = document.getElementById("tableau").rows[source];//on copie la ligne	
+		var arrayLignes = document.getElementById("tableau").rows[source];
+		var cellules = arrayLignes.cells;
+		document.getElementById("RefId").value=cellules[0].innerHTML;
+		document.getElementById("RefNom").value=cellules[1].innerHTML;
+		document.getElementById("RefFiliere").value=cellules[2].innerHTML;
+		document.getElementById("RefSpecialite").value=cellules[3].innerHTML;
+		document.getElementById("RefArrete").value=cellules[4].innerHTML;
+		document.getElementById("RefObsolette").value=cellules[5].innerHTML;
+		document.getElementById("RefMinisteriel").value=cellules[6].innerHTML;
+	}
+
+</script>
+
 </head>
 
 
@@ -25,6 +43,7 @@
 	include "../interface/referentiel.php";
 	
 	//raz données
+	$RefId="";
 	$RefNom="";
 	$RefSpecialite="";
 	$RefArrete="";
@@ -42,7 +61,7 @@
     if ($crud=="ajouter")
         echo "<form method='POST' action='..\\interface\\crud.php?action=ajouter&formulaire=htmlreferentiel'>";
 
-    if ($crud=="modiier")
+    if ($crud=="modifier")
         echo "<form method='POST' action='..\\interface\\crud.php?action=modifier&formulaire=htmlreferentiel'>";
   
   
@@ -54,9 +73,13 @@
 		echo $chaine;
 			
 	}
+	?>
+	<br>
+	<br>
+	<?php
  
     // affichage des champs
-    afficheChamps($RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel);
+    afficheChamps($RefId,$RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel);
   
     // affichage du bouton de validation
 	if (($crud=="ajouter") || ($crud=="modifier"))
@@ -69,9 +92,9 @@
 	
 	// fonction qui affiche les champs du formulaire et les données en cas de modification
 	//------------------------------------------------------------------------------------
-	function afficheChamps($RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel)
+	function afficheChamps($RefId,$RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel)
 	{
-		
+		    echo "<input type='text' hidden  id='RefId' name='RefId'>$RefId<br>\n";
 			echo "Nom : <input type='text' id='RefNom' name='RefNom' value='$RefNom'><br>
   		  	Filiere : "; 
                  
@@ -84,6 +107,7 @@
 			echo 
 			"
 			<br>
+
 			Spécialité : <input type='text' id='RefSpecialite' name='RefSpecialite' value='$RefSpecialite'><br>
 			Date de l'arrêté : <input type='date' id='RefArrete' name='RefArrete' value='$RefArrete'><br>
 			Date de l'arrêt du référentiel : <input type='date' id='RefObsolette' name='RefObsolette' value='$RefObsolette'><br>

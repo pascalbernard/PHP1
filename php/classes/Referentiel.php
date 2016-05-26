@@ -18,6 +18,15 @@
 
       
       // getter / setter
+      public function getIdRef()
+      {
+          return $this->i_IdRef;
+      }
+      public function setIdRef($var)
+      {
+          $this->i_IdRef=$var;
+      } 
+      
       
       public function getNom()
       {
@@ -93,9 +102,9 @@
       }
       
       // modifier un référentiel
-      public function Modifier($ii_IdRef){
-		  
-		  		  
+      public function Modifier(){
+		  $idRef=$this->getIdRef();
+		  echo "****$idRef";		  
 		  
 		  
       }

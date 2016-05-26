@@ -16,13 +16,14 @@
   switch ($action)
   {
   	  //----------------------------------------ajouter------------------------
-  	  case ("ajouter"):
+  	  case (("ajouter") || ("modifier") ):
   	  
 		  switch ($formulaire) 
 		  {
 		      case ("htmlreferentiel") :
 		      
 		        $referentiel = new Referentiel();
+		        $referentiel->setIdRef($_POST["RefId"]);
 		        $referentiel->setObsolette($_POST["RefObsolette"]) ;
 		        $referentiel->setFiliere($_POST["RefFiliere"]) ;
 		        $referentiel->setNom($_POST["RefNom"]) ;
@@ -35,12 +36,13 @@
 		        if ($action=="ajouter") $referentiel->Ajouter();
       			
       			// modifier
+      			if ($action=="modifier") $referentiel->Modifier();
       			
       			
-		         break;
+		        break;
 		  }
   
-  	  break;
+  	  //break;
   	  
   	  
   	 
