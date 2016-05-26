@@ -103,10 +103,17 @@
       
       // modifier un référentiel
       public function Modifier(){
-		  $idRef=$this->getIdRef();
-		  echo "****$idRef";		  
 		  
+		$tabValeurs["nom"]=$this->getNom();
+		$tabValeurs["filiere"]=$this->getFiliere();
+		$tabValeurs["specialite"]=$this->getSpecialite();
+		$tabValeurs["dateArrete"]=$this->getArrete();
+		$tabValeurs["dateObsolette"]=$this->getObsolette();
+		$tabValeurs["refMinisteriel"]=$this->getRefMinisteriel(); 
+      	$tabValeurs["idRef"]=$this->getIdRef();  
 		  
+		$table=new DaoReferentiel();
+		$table->update($tabValeurs);  	  
       }
       
       // supprimer un référentiel
@@ -114,6 +121,11 @@
       
       // lire un référentiel
       public function Lire ($ii_IdRef) {}
+      
+      
+      
+      
+      
       
       // création de la table
       // CREATE TABLE `scool`. ( `idRef` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `filiere` VARCHAR(10) NOT NULL , 
