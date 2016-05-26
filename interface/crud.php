@@ -12,27 +12,39 @@
   $action=$_GET["action"];
   $formulaire=$_GET["formulaire"];
   
-  switch ($formulaire) 
+  
+  switch ($action)
   {
-      case ("htmlreferentiel") :
-      
-        $referentiel = new Referentiel();
-        $referentiel->setObsolette($_POST["RefObsolette"]) ;
-        $referentiel->setFiliere($_POST["RefFiliere"]) ;
-        $referentiel->setNom($_POST["RefNom"]) ;
-        $referentiel->setRefMinisteriel($_POST["RefMinisteriel"]);
-        $referentiel->setSpecialite($_POST["RefSpecialite"]);
-        $referentiel->setArrete($_POST["RefArrete"]);
+  	  //----------------------------------------ajouter------------------------
+  	  case ("ajouter"):
+  	  
+		  switch ($formulaire) 
+		  {
+		      case ("htmlreferentiel") :
+		      
+		        $referentiel = new Referentiel();
+		        $referentiel->setObsolette($_POST["RefObsolette"]) ;
+		        $referentiel->setFiliere($_POST["RefFiliere"]) ;
+		        $referentiel->setNom($_POST["RefNom"]) ;
+		        $referentiel->setRefMinisteriel($_POST["RefMinisteriel"]);
+		        $referentiel->setSpecialite($_POST["RefSpecialite"]);
+		        $referentiel->setArrete($_POST["RefArrete"]);
 
-        break;                        
-      	
-      	// sauvegarde
-        $referentiel->Ajouter();
-      	
-      
+		                               
+      			// ajouter
+		        if ($action=="ajouter") $referentiel->Ajouter();
+      			
+      			// modifier
+      			
+      			
+		         break;
+		  }
+  
+  	  break;
+  	  
+  	  
+  	 
   }
-  
-  
   
   
 ?>

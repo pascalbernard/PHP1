@@ -1,5 +1,10 @@
 <?php
   
+
+ include_once ("bd.php");
+ include_once ("DaoFiliere.php");
+ include_once ("DaoReferentiel.php");
+  
   class Referentiel 
   {
          private    $i_IdRef;
@@ -47,6 +52,7 @@
       }
       public function setObsolette($var)
       {
+      	  if ($var=="") $var="1901-01-01";
           $this->d_Obsolette=$var;
       }                  
      
@@ -56,6 +62,7 @@
       }
       public function setArrete($var)
       {
+      	  if ($var=="") $var="1901-01-01";
           $this->d_Arrete=$var;
       }                  
      
@@ -75,10 +82,23 @@
       //private function __construct() {}
       
       // ajouter un référentiel
-      public function Ajouter(){}
+      public function Ajouter(){
+		  
+		  $chaineValue="('".$this->getNom()."','".$this->getFiliere()."','".$this->getSpecialite()."','".$this->getArrete()."','".$this->getObsolette()."','".$this->getRefMinisteriel()."')";		  
+	      $bd=new bd();
+	      $conn=$bd->connectionBase();
+	      $table=new DaoReferentiel();
+	      $res=$table->insert($conn,$chaineValue);
+	      
+      }
       
       // modifier un référentiel
-      public function Modifier($ii_IdRef){}
+      public function Modifier($ii_IdRef){
+		  
+		  		  
+		  
+		  
+      }
       
       // supprimer un référentiel
       public function Supprimer($ii_IdRef){} 
@@ -87,7 +107,9 @@
       public function Lire ($ii_IdRef) {}
       
       // création de la table
-      // CREATE TABLE `scool`. ( `idRef` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `filiere` VARCHAR(10) NOT NULL , `specialite` VARCHAR(60) NOT NULL , `dateArrete` DATE NOT NULL , `dateObsolette` DATE NOT NULL , `refMinisteriel` VARCHAR(100) NOT NULL , PRIMARY KEY (`idRef`)) ENGINE = MyISAM; 
+      // CREATE TABLE `scool`. ( `idRef` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , `filiere` VARCHAR(10) NOT NULL , 
+      //`specialite` VARCHAR(60) NOT NULL , `dateArrete` DATE NOT NULL , `dateObsolette` DATE NOT NULL , 
+      //`refMinisteriel` VARCHAR(100) NOT NULL , PRIMARY KEY (`idRef`)) ENGINE = MyISAM; 
   }
       
   
