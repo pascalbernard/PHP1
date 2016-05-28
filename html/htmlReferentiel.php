@@ -56,18 +56,21 @@
     if(empty($_GET["crud"]))  $crud=""; else $crud= $_GET["crud"];
     
 
-    // action : ajouter des informations en base de données
+    // action : gérer des informations en base de données
     //------------------------------------------------------    
     if ($crud=="ajouter")
         echo "<form method='POST' action='..\\interface\\crud.php?action=ajouter&formulaire=htmlreferentiel'>";
 
     if ($crud=="modifier")
         echo "<form method='POST' action='..\\interface\\crud.php?action=modifier&formulaire=htmlreferentiel'>";
+        
+    if ($crud=="supprimer")
+    	echo "<form method='POST' action='..\\interface\\crud.php?action=supprimer&formulaire=htmlreferentiel'>"; 
   
   
   
   	// affichage de la liste des données avant la saisie
-  	if ($crud=="modifier")
+  	if (($crud=="modifier") || ($crud=="supprimer"))
 	{
 		$chaine=htmlListeReferentiel("idRef","ASC");
 		echo $chaine;
@@ -77,14 +80,16 @@
 	<br>
 	<br>
 	<?php
- 
+    // affichage de l'action
+    echo (strtoUpper($crud)."<br>");
+    
     // affichage des champs
     afficheChamps($RefId,$RefNom,$RefSpecialite,$RefArrete,$RefObsolette="",$RefMinisteriel);
   
     // affichage du bouton de validation
-	if (($crud=="ajouter") || ($crud=="modifier"))
+	//if (($crud=="ajouter") || ($crud=="modifier") || ($crud=="supprimer"))
 	{				
-		echo "<input type='submit' value='OK'>";
+		echo "<input type='submit' value='OK'>";        
 		echo "</form>";
 	}
 	
@@ -98,7 +103,7 @@
 			echo "Nom : <input type='text' id='RefNom' name='RefNom' value='$RefNom'><br>
   		  	Filiere : "; 
                  
-			$conn=getbase();
+			//$conn=getbase();
 			// id=RefFiliere name=RefFiliere
 			$chaine=htmlListeDeroulanteFiliere();
 			
@@ -111,7 +116,7 @@
 			Spécialité : <input type='text' id='RefSpecialite' name='RefSpecialite' value='$RefSpecialite'><br>
 			Date de l'arrêté : <input type='date' id='RefArrete' name='RefArrete' value='$RefArrete'><br>
 			Date de l'arrêt du référentiel : <input type='date' id='RefObsolette' name='RefObsolette' value='$RefObsolette'><br>
-			Page internet du référentiel : <input type='text' id='RefMinisteriel' name='RefMinisteriel' value='$RefMinisteriel'><br>  
+			Page internet du référentiel : <input type='url' id='RefMinisteriel' name='RefMinisteriel' value='$RefMinisteriel'><br>  
 			";	
 		
 		

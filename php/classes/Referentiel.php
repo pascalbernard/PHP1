@@ -117,7 +117,15 @@
       }
       
       // supprimer un référentiel
-      public function Supprimer($ii_IdRef){} 
+      public function Supprimer(){
+		  
+      	$tabValeurs["idRef"]=$this->getIdRef();  
+		  
+		$table=new DaoReferentiel();
+		$table->delete($this->getIdRef()); 		  		  
+		  
+		   
+      } 
       
       // lire un référentiel
       public function Lire ($ii_IdRef) {}

@@ -75,6 +75,16 @@ class DaoReferentiel
 
       }
       
+      // suppresion de la ligne
+      function delete($idRef)
+      {
+		  $chaine="delete from referentiel where idRef=".$idRef ;
+		  $cnxBase = new bd();
+		  $conn = $cnxBase->connectionBase();	
+		  if ($res = !$conn->query($chaine))
+			echo "Echec de la suppression : $chaine";
+      }
+      
   }
   
 

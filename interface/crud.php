@@ -38,6 +38,9 @@
       			// modifier
       			if ($action=="modifier") $referentiel->Modifier();
       			
+      			// supprimer
+      			if ($action=="supprimer") $referentiel->Supprimer();
+      			
       			
 		        break;
 		  }
