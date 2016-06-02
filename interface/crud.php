@@ -6,7 +6,8 @@
 
   
   
-  include "..\\php\\classes\\referentiel.php";
+  include_once "..\\php\\classes\\referentiel.php";
+  include_once "..\\php\\classes\\referentielChapitre.php";
   
   
   $action=$_GET["action"];
@@ -43,7 +44,26 @@
       			
       			
 		        break;
+		        
+		        
+		      case ("htmlreferentielcontenu")  :
+		      
+		      	$chapitre = new ReferentielChapitre();
+		      	$chapitre->setIdRef($_POST["Refid"]);
+		      	$chapitre->setchapNumerotation($_POST["contNum"]);
+		      	$chapitre->setchapTitre($_POST["contTitre"]);
+		      	$chapitre->setchapDetail($_POST["contDetail"]);
+		      
+		      	if ($action=="ajouter") $chapitre->Ajouter();
+		      	if ($action=="modifier") $chapitre->Modifier();
+		      	if ($action=="supprimer") $chapitre->Supprimer();
+		      
+		      
+		      
+		      
+		      break;
 		  }
+		  
   
   	  //break;
   	  

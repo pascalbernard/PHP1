@@ -3,7 +3,8 @@
    
 include_once ("bd.php");
 //include_once ("DaoFiliere.php");
-include_once ("DaoReferentiel.php");
+include_once ("DaoChapitreContenu.php");
+
 
 class ReferentielChapitre 
 {
@@ -23,7 +24,14 @@ class ReferentielChapitre
 	public function setchapDetail($var){ $this->chapDetail=$var;}	 
 	 
 	 
-	 
+	public function Selectionner()
+	{
+	  $bd=new bd();
+	  $conn=$bd->connectionBase();
+	  $table=new daoChapitreContenu();
+	  $res=$table->	selectChapitre();
+	  return $res;
+	} 
 	 
 
 	public function Ajouter(){
@@ -43,7 +51,7 @@ class ReferentielChapitre
 		$tabValeurs["detail"]=$this->getchapDetail();
 
 		$table=new daoChapitreContenu();
-		$table->update($tabValeurs);  	  
+		$table->updateChapitre($tabValeurs);  	  
 	}
   
    
@@ -52,7 +60,7 @@ class ReferentielChapitre
 	    $tabValeurs["idRef"]=$this->getIdRef();  
 		  
 		$table=new daoChapitreContenu();
-		$table->delete($this->getIdRef()); 		  		  
+		$table->deleteChapitre($this->getIdRef()); 		  		  
 			  
 		   
     } 

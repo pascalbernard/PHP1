@@ -33,7 +33,7 @@ class daoChapitreContenu
 	
 	
 	
-	public function insertChapitre($valeur){
+	public function insertChapitre($valeurs){
 		
 		$cnxBase = new bd();
 		$conn = $cnxBase->connectionBase();

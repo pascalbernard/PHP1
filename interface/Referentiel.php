@@ -87,19 +87,38 @@
     
     // affiche la liste déroulante des référentiel
     //---------------------------------------------
-    function htmlListeDeroulanteReferentiel()
+    function htmlListeDeroulanteReferentiel($scriptJS)
     {
 		$tab=array();                
         $conn=getbase();
         
         $tab=tableauReferentiel($conn);
         
-        $chaine = "<SELECT name='ListeReferentiel' id='ListeReferentiel' size='1'>";
+        $chaine = "<SELECT name='ListeReferentiel' id='ListeReferentiel' onchange='$scriptJS' size='1'>\n";
         for ($i=0;$i<count($tab);$i++)
         {
             $chaine = $chaine.'<OPTION>'.$tab[$i][0]."-".$tab[$i][1]."-".$tab[$i][2]."-".$tab[$i][3]."-".$tab[$i][4]."-".$tab[$i][5]."</option>\n";
         }
         $chaine=$chaine."</select>";
+        return $chaine;	
+		
+		
+		
+    }
+    
+    // affiche la liste déroulante des référentiel
+    //---------------------------------------------
+    function AJAXhtmlListeDeroulanteReferentiel()
+    {
+		$tab=array();                
+        $conn=getbase();
+        
+        $tab=tableauReferentiel($conn);
+        
+        for ($i=0;$i<count($tab);$i++)
+        {
+            $chaine = $chaine.'<OPTION>'.$tab[$i][0]."-".$tab[$i][1]."-".$tab[$i][2]."-".$tab[$i][3]."-".$tab[$i][4]."-".$tab[$i][5]."</option>\n";
+        }
         return $chaine;	
 		
 		
