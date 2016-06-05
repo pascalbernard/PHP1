@@ -19,19 +19,8 @@ if ($formulaireAppelant=="htmlReferentielChapitre")
 	$idEditor=$tab[0];
 
 	if ($idEditor) {
-		/*mysql_connect("127.0.0.1", "root", "");
-		mysql_select_db("scool");
-		*/
 		$req = new ReferentielChapitre();
-		$back = $req->Selectionner();
-		
-		
-		
-		/*$req="SELECT * FROM chapitreref WHERE idRef=" . mysql_real_escape_string($idEditor);
-		$query = mysql_query($req );
-		while ($back = mysql_fetch_assoc($query)) {
-			echo "<item id=\"" . $back["idRef"] . "\" name=\"" . $back["titre"] . "\" />";
-		}*/
+		$back = $req->Selectionner("idRef=".$idEditor);
 		
 		for ($i=0;$i<count($back);$i++)
 			echo "<item id=\"" . $back[$i][0] . "\" name=\"" . $back[$i][1] ." - ".$back[$i][2]. "\" />";	
@@ -40,4 +29,7 @@ if ($formulaireAppelant=="htmlReferentielChapitre")
 
 	echo "</list>";
 }
+
+
+
 ?>
