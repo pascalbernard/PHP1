@@ -114,7 +114,7 @@
         $conn=getbase();
         
         $tab=tableauReferentiel($conn);
-        
+        $chaine="";
         for ($i=0;$i<count($tab);$i++)
         {
             $chaine = $chaine.'<OPTION>'.$tab[$i][0]."-".$tab[$i][1]."-".$tab[$i][2]."-".$tab[$i][3]."-".$tab[$i][4]."-".$tab[$i][5]."</option>\n";

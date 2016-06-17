@@ -89,7 +89,7 @@
     // affichage du bouton de validation
 	//if (($crud=="ajouter") || ($crud=="modifier") || ($crud=="supprimer"))
 	{				
-		echo "<input type='submit' value='OK'>";        
+		echo "<input type='submit' value='".strtoupper($crud)."'>";        
 		echo "</form>";
 	}
 	

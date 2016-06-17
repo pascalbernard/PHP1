@@ -8,6 +8,7 @@
   
   include_once "..\\php\\classes\\referentiel.php";
   include_once "..\\php\\classes\\referentielChapitre.php";
+  include_once "..\\php\\classes\\ReferentielContenu.php";
   
   
   $action=$_GET["action"];
@@ -46,22 +47,45 @@
 		        break;
 		        
 		        
-		      case ("htmlreferentielcontenu")  :
+		      case ("htmlreferentielChapitre")  :
 		      
 		      	$chapitre = new ReferentielChapitre();
-		      	$chapitre->setIdRef($_POST["Refid"]);
+		      	$chapitre->setIdRef($_POST["contRef"]);
 		      	$chapitre->setchapNumerotation($_POST["contNum"]);
 		      	$chapitre->setchapTitre($_POST["contTitre"]);
 		      	$chapitre->setchapDetail($_POST["contDetail"]);
+		      	
 		      
 		      	if ($action=="ajouter") $chapitre->Ajouter();
 		      	if ($action=="modifier") $chapitre->Modifier();
 		      	if ($action=="supprimer") $chapitre->Supprimer();
 		      
-		      
-		      
-		      
+
 		      break;
+		      
+		      case ("htmlreferentielContenu")  :
+		      
+		      	$contenu = new ReferentielContenu();
+				$contenu->setIdRef($_POST["contRef"]);
+				$contenu->setchapNumerotation($_POST["contNum"]);
+				$contenu->setcontNumerotation($_POST["idCont"]);
+				$contenu->setDonnees($_POST["donnees"]);
+				$contenu->setsavoirs($_POST["savoirs"]);
+				$contenu->setlimites($_POST["limites"]);
+				$contenu->setResultatsAttendus($_POST["resultatsAttendus"]);
+				$contenu->setCapComp($_POST["CapComp"]);
+				$contenu->setObservations($_POST["observations"]);
+		      	
+		      
+		      	if ($action=="ajouter") $contenu->ajouter();
+		      	if ($action=="modifier") $contenu->modifier();
+		      	if ($action=="supprimer") $contenu->supprimer();
+		      	
+		      	
+		      break;
+		      
+			
+			
 		  }
 		  
   

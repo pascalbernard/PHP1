@@ -24,19 +24,20 @@ class ReferentielChapitre
 	public function setchapDetail($var){ $this->chapDetail=$var;}	 
 	 
 	 
-	public function Selectionner()
+	public function Selectionner($clause)
 	{
 	  $bd=new bd();
 	  $conn=$bd->connectionBase();
 	  $table=new daoChapitreContenu();
-	  $res=$table->	selectChapitre();
+	  $res=$table->	selectChapitre($clause);
 	  return $res;
 	} 
 	 
 
 	public function Ajouter(){
 	  
-	  $chaineValue="('".$this->getIdRef()."','".$this->getchapNumerotation()."','".$this->getchapTitre()."','".$this->getchapDetail()."')";		  
+	  $chaineValue='("'.$this->getIdRef().'","'.$this->getchapNumerotation().'","'.$this->getchapTitre().'","'.$this->getchapDetail().'")';		 
+	  $chaineValue=str_replace("'","\'",$chaineValue) ;	
 	  $bd=new bd();
 	  $conn=$bd->connectionBase();
 	  $table=new daoChapitreContenu();
@@ -46,6 +47,7 @@ class ReferentielChapitre
 	
 	public function Modifier(){
 	  
+	  	$tabValeurs["idRef"]=$this->getIdRef();
 		$tabValeurs["numerotation"]=$this->getchapNumerotation();
 		$tabValeurs["titre"]=$this->getchapTitre();
 		$tabValeurs["detail"]=$this->getchapDetail();
@@ -57,10 +59,13 @@ class ReferentielChapitre
    
     public function Supprimer(){
 	  
-	    $tabValeurs["idRef"]=$this->getIdRef();  
+	  	$tabValeurs["idRef"]=$this->getIdRef();
+		$tabValeurs["numerotation"]=$this->getchapNumerotation();
+		$tabValeurs["titre"]=$this->getchapTitre();
+		$tabValeurs["detail"]=$this->getchapDetail();
 		  
 		$table=new daoChapitreContenu();
-		$table->deleteChapitre($this->getIdRef()); 		  		  
+		$table->deleteChapitre($tabValeurs); 		  		  
 			  
 		   
     } 

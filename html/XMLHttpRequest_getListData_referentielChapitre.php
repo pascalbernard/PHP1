@@ -8,6 +8,7 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 echo "<list>";
 
 $retour = (isset($_POST["IdEditor"])) ? htmlentities($_POST["IdEditor"]) : NULL;
+$ld1=(isset($_POST["LD1"])) ? htmlentities($_POST["LD1"]) : NULL;
 $formulaireAppelant = (isset($_POST["htmlAppelant"])) ? htmlentities($_POST["htmlAppelant"]) : NULL;
 
 
@@ -17,10 +18,12 @@ if ($formulaireAppelant=="htmlReferentielChapitre")
 	// extraction de la première valeur de la chaine transmise -> id à rechercher
 	$tab=split("-",$retour);
 	$idEditor=$tab[0];
+	$tab=split("-",$ld1);
+	$idld1=$tab[0];
 
 	if ($idEditor) {
 		$req = new ReferentielChapitre();
-		$back = $req->Selectionner("numerotation='".$idEditor."'");
+		$back = $req->Selectionner("idRef = ".$idld1." and numerotation='".$idEditor."'");
 		
 			/*echo '<input type="text" id="contNum" name="contNum" value="'.$back[0][1].'"></input>';
 			echo '<input type="text" id="contTitre" name="contTitre" value="'.$back[0][2].'"></input>';
@@ -37,6 +40,8 @@ if ($formulaireAppelant=="htmlReferentielChapitre")
 
 	//echo "</list>";
 }
+
+
 
 
 

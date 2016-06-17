@@ -93,7 +93,7 @@
       // ajouter un référentiel
       public function Ajouter(){
 		  
-		  $chaineValue="('".$this->getNom()."','".$this->getFiliere()."','".$this->getSpecialite()."','".$this->getArrete()."','".$this->getObsolette()."','".$this->getRefMinisteriel()."')";		  
+		  $chaineValue='("'.$this->getNom().'","'.$this->getFiliere().'","'.$this->getSpecialite().'","'.$this->getArrete().'","'.$this->getObsolette().'","'.$this->getRefMinisteriel().'")';		  
 	      $bd=new bd();
 	      $conn=$bd->connectionBase();
 	      $table=new DaoReferentiel();
@@ -128,7 +128,12 @@
       } 
       
       // lire un référentiel
-      public function Lire ($ii_IdRef) {}
+      public function Lire ($ii_IdRef) {
+		  
+		  
+		  
+		  
+      }
       
       
       
